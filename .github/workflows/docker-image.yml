@@ -22,14 +22,4 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag jobet1995:$(date +%s)
 
-    - name: Save Docker image to a tar file
-      run: docker save jobet1995:$(date +%s) -o jobet1995.tar
-
-    - name: Upload Docker image artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: jobet1995-docker-image
-        path: jobet1995.tar
-
-    - name: Clean up Docker images
-      run: docker rmi jobet1995:$(date +%s)
+    
