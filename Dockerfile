@@ -56,10 +56,6 @@ RUN sudo apt-get update && sudo apt-get install -y openjdk-11-jdk
 RUN sudo apt-get install -y redis-server && \
     sudo service redis-server start
 
-RUN sudo apt-get install -y nginx
-COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
-RUN sudo service nginx start
-
 RUN curl -fsSL https://get.docker.com -o get-docker.sh && \
     sh get-docker.sh && \
     sudo usermod -aG docker salesforceuser && \
