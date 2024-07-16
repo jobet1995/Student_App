@@ -10,9 +10,6 @@ RUN useradd -ms /bin/bash salesforceuser
 USER salesforceuser
 WORKDIR /home/salesforceuser
 
-
-RUN curl -fsSL https://code-server.dev/install.sh | sh -s -- --version $CODE_SERVER_VERSION
-
 WORKDIR /home/salesforceuser/app
 
 COPY . .
