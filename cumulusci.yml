@@ -1,0 +1,26 @@
+minimum_cumulusci_version: '3.90.0'
+project:
+    name: StudentApp
+    package:
+        name: StudentApp
+        namespace: y
+        api_version: '61.0'
+    git:
+        default_branch: 'main'
+    source_format: sfdx
+
+tasks:
+    robot:
+        options:
+            suites: robot/StudentApp/tests
+            options:
+                outputdir: robot/StudentApp/results
+
+    robot_testdoc:
+        options:
+            path: robot/StudentApp/tests
+            output: robot/StudentApp/doc/StudentApp_tests.html
+
+    run_tests:
+        options:
+            required_org_code_coverage_percent: 75
