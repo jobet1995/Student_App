@@ -10,20 +10,6 @@ RUN useradd -ms /bin/bash salesforceuser
 USER salesforceuser
 WORKDIR /home/salesforceuser
 
-RUN sudo apt-get update && sudo apt-get install -y \
-    curl \
-    unzip \
-    jq \
-    vim \
-    git \
-    build-essential \
-    python3 \
-    python3-pip \
-    postgresql \
-    libpq-dev \
-    && sudo ln -s /usr/bin/python3 /usr/bin/python \
-    && sudo ln -s /usr/bin/pip3 /usr/bin/pip \
-    && sudo rm -rf /var/lib/apt/lists/*
 
 RUN curl -sL https://developer.salesforce.com/media/salesforce-cli/sfdx-linux-amd64.tar.xz | tar -xJ \
     && sudo ./sfdx/install \
