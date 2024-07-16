@@ -11,11 +11,6 @@ USER salesforceuser
 WORKDIR /home/salesforceuser
 
 
-RUN curl -sL https://developer.salesforce.com/media/salesforce-cli/sfdx-linux-amd64.tar.xz | tar -xJ \
-    && sudo ./sfdx/install \
-    && rm -rf sfdx \
-    && sfdx --version
-
 RUN curl -fsSL https://code-server.dev/install.sh | sh -s -- --version $CODE_SERVER_VERSION
 
 WORKDIR /home/salesforceuser/app
