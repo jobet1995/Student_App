@@ -15,6 +15,8 @@ jobs:
       uses: actions/checkout@v4
       with:
         fetch-depth: 0
+
+    - name: Echo checkout success
       run: echo "Repository checked out successfully"
 
     - name: Setup Docker Buildx
@@ -30,13 +32,16 @@ jobs:
         key: ${{ runner.os }}-buildx-${{ github.sha }}
         restore-keys: |
           ${{ runner.os }}-buildx-
+    
+    - name: Echo cache success
       run: echo "Docker layers cached"
 
     - name: Build the Docker image
       run: |
         echo "Starting Docker build"
-        docker build . --file Dockerfile --tag jobet1995:$(date +%s)
-        echo "Docker build completed"
+        IMAGE_TAG=jobet1995:$(date +%s)
+        docker build . --file Dockerfile --tag $IMAGE_TAG
+        echo "Docker build completed with tag $IMAGE_TAG"
 
     - name: List Docker images
       run: |
@@ -47,14 +52,17 @@ jobs:
     - name: Save Docker image to a tar file
       run: |
         echo "Saving Docker image to tar file"
-        docker save jobet1995:$(date +%s) -o jobet1995.tar
-        echo "Docker image saved successfully"
+        IMAGE_TAG=jobet1995:$(date +%s)
+        docker save $IMAGE_TAG -o jobet1995.tar
+        echo "Docker image saved successfully to jobet1995.tar"
 
     - name: Upload Docker image artifact
       uses: actions/upload-artifact@v3
       with:
         name: jobet1995-docker-image
         path: jobet1995.tar
+
+    - name: Echo artifact upload success
       run: echo "Docker image artifact uploaded successfully"
 
     - name: Clean up Docker images
