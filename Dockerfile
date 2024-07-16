@@ -23,11 +23,6 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
   CMD curl -f http://localhost:8080/ || exit 1
 
 
-RUN npm install -g typescript eslint
-
-RUN sudo apt-get update && sudo apt-get install -y openjdk-11-jdk
-
-
 CMD ["bash"]
 
 ENTRYPOINT ["sfdx"]
