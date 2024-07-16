@@ -43,12 +43,6 @@ jobs:
         docker build . --file Dockerfile --tag $IMAGE_TAG
         echo "Docker build completed with tag $IMAGE_TAG"
 
-    - name: List Docker images
-      run: |
-        echo "Listing Docker images"
-        docker images
-        echo "Docker images listed successfully"
-
     - name: Save Docker image to a tar file
       run: |
         echo "Saving Docker image to tar file"
